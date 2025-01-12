@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+window_set_fullscreen(1);
+
 vspd		= 0;
 hspd		= 0;
 max_vspd	= 7; 
@@ -83,5 +85,13 @@ p_collision = function() {
 		} else {
 			y += _vspd	
 		}
+		
+		var _enemy = instance_place(x, y - _vspd, obj_enemies);
+		
+		if (_enemy) {
+			jump_qt = 1;
+			vspd = -max_vspd;
+		}
+		
 	}	
 }
