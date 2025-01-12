@@ -59,6 +59,7 @@
     {"id":{"name":"spr_pineaplle","path":"sprites/spr_pineaplle/spr_pineaplle.yy",},},
     {"id":{"name":"spr_player_down","path":"sprites/spr_player_down/spr_player_down.yy",},},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},
+    {"id":{"name":"spr_player_jump_double","path":"sprites/spr_player_jump_double/spr_player_jump_double.yy",},},
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
     {"id":{"name":"spr_player_run","path":"sprites/spr_player_run/spr_player_run.yy",},},
     {"id":{"name":"spr_strawberry","path":"sprites/spr_strawberry/spr_strawberry.yy",},},

@@ -3,8 +3,9 @@
 
 vspd		= 0;
 hspd		= 0;
-max_vspd	= 8; 
+max_vspd	= 7; 
 max_hspd	= 3;
+jump_qt		= 2;
 
 grav		= .5;
 
@@ -14,7 +15,7 @@ xscale		= image_xscale;
 face		= 0;
 sprite		= sprite_index;
 
-sprites		= [[spr_player_idle], [spr_player_run], [spr_player_jump], [spr_player_down]]
+sprites		= [[spr_player_idle], [spr_player_run], [spr_player_jump], [spr_player_down], [spr_player_jump_double]]
 
 
 p_mov = function() {	
@@ -40,16 +41,21 @@ p_mov = function() {
 		if (vspd > 0){
 			sprite = sprites[3][0];
 		} else{
-			sprite = sprites[2][0];	
-		}
-		
-	} else {
-		if (_jump) {
-			vspd = -max_vspd	
-		}
+			if (jump_qt == 1) {   
+				sprite = sprites[2][0];	
+			} else {
+				sprite = sprites[4][0]	
+			}
+		}		
+	} else {		
+		jump_qt = 2;
+	}
+	
+	if (_jump and jump_qt > 0) {
+		jump_qt--;
+		vspd = -max_vspd	
 	}
 	
 	vspd = clamp(vspd, -max_vspd, max_vspd)
 }
-
 
