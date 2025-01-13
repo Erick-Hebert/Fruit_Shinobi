@@ -17,7 +17,7 @@ xscale		= image_xscale;
 face		= 0;
 sprite		= sprite_index;
 
-sprites		= [[spr_player_idle], [spr_player_run], [spr_player_jump], [spr_player_down], [spr_player_jump_double]]
+sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_down, spr_player_jump_double];
 
 
 p_mov = function() {	
@@ -28,12 +28,12 @@ p_mov = function() {
 	var _jump	= keyboard_check_pressed(vk_up);
 		
     // Controle de sprite
-    if (_right) {face = 0;xscale = 1;sprite = sprites[1][0];}
-    if (_jump) {face = 1; sprite = sprites[2][0];}
-    if (_left) {face = 2;xscale = -1;sprite = sprites[1][0];}
+    if (_right) {face = 0;xscale = 1;sprite = sprites[1];}
+    if (_jump) {face = 1; sprite = sprites[2];}
+    if (_left) {face = 2;xscale = -1;sprite = sprites[1];}
     
     if (!_right && !_jump && !_left && _floor) {
-        sprite = sprites[0][0]; 
+        sprite = sprites[0]; 
     }
 	
 	hspd = (_right - _left) * max_hspd;
@@ -41,12 +41,12 @@ p_mov = function() {
 	if (!_floor) {
 		vspd += grav;
 		if (vspd > 0){
-			sprite = sprites[3][0];
+			sprite = sprites[3];
 		} else{
 			if (jump_qt == 1) {   
-				sprite = sprites[2][0];	
+				sprite = sprites[2];	
 			} else {
-				sprite = sprites[4][0]	
+				sprite = sprites[4];
 			}
 		}		
 	} else {		
@@ -61,7 +61,6 @@ p_mov = function() {
 	vspd = clamp(vspd, -max_vspd, max_vspd)
 }
 
-
 p_collision = function() {	
 	//horizontal colission
 	repeat(abs(hspd)) {
@@ -72,8 +71,7 @@ p_collision = function() {
 			hspd = 0;
 		} else {
 			x += _hspd;
-		}
-	
+		}	
 	}
 
 	//vertical collision
@@ -88,9 +86,11 @@ p_collision = function() {
 		
 		var _enemy = instance_place(x, y - _vspd, obj_enemies);
 		
-		if (_enemy) {
+		if (_enemy and _enemy.life > 0) {
 			jump_qt = 1;
 			vspd = -max_vspd;
+			_enemy.dmg = true;
+			_enemy.state = _enemy.state_dmg;
 		}
 		
 	}	
