@@ -56,7 +56,7 @@ state_dmg = function() {
 	
 	if (dmg and dmg_timer <= 0 and life > 0) {
 		dmg			= false;
-		dmg_timer	= game_get_speed(gamespeed_fps);
+		dmg_timer	= game_get_speed(gamespeed_fps) / 2;
 		life--;	
 	}
 	

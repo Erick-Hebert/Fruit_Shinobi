@@ -2,5 +2,3 @@
 // Você pode escrever seu código neste editor
 
 p_collision();
-
-
