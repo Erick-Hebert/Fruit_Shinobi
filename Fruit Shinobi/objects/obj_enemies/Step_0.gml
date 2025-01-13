@@ -4,6 +4,7 @@
 state();
 
 if (life <= 0 and image_alpha > .5) {
+	hspd = +max_hspd
 	image_angle -= 4;
 	image_alpha -= .02
 }

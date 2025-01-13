@@ -47,8 +47,7 @@ state_idle = function() {
 	spd = 0;	
 }
 
-state_dmg = function() {
-	
+state_dmg = function() {	
 	check_img(2)
 	
 	if (img_ind + img_spd >= img_numb) {
@@ -58,11 +57,7 @@ state_dmg = function() {
 	if (dmg and dmg_timer <= 0 and life > 0) {
 		dmg			= false;
 		dmg_timer	= game_get_speed(gamespeed_fps);
-		life--;
-		
-		if (life <= 0) {
-			vspd = -max_vspd;	
-		}		
+		life--;	
 	}
 	
 }
