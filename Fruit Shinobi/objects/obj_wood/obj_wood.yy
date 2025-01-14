@@ -8,8 +8,8 @@
   "name":"obj_wood",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"enemies",
+    "path":"folders/Objects/enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_enemies",
@@ -36,6 +36,9 @@
     "name":"spr_wood_idle",
     "path":"sprites/spr_wood_idle/spr_wood_idle.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_wood_idle",
+    "path":"sprites/spr_wood_idle/spr_wood_idle.yy",
+  },
   "visible":true,
 }

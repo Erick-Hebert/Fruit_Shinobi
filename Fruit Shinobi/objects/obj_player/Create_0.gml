@@ -11,15 +11,17 @@ jump_qt		= 2;
 grav		= .5;
 
 //dano
-life		= 3;
+max_life	= 3;
+life		= max_life;
 dmg			= false;
 dmg_timer	= 0;
 
 //sprite
 img_ind		= 1;
 img_numb	= 0;
-img_spd		= 12;
+img_spd		= 12 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
+alpha		= image_alpha;
 face		= 0;
 sprite		= sprite_index;
 sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_jump_double, spr_player_down, spr_player_dmg];
@@ -47,9 +49,13 @@ jump_control = function() {
 	}
 	
 	vspd = clamp(vspd, -max_vspd, max_vspd)	
+	
 }
 
 controls = function() {
+	
+	dmg_timer--;
+	
 	floor_	= place_meeting(x, y + 1, obj_wall);
 
 	right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
@@ -110,7 +116,7 @@ state_mov = function() {
 	jump_control();	
 }
 
-state_dmg = function(_dano = 1, _hspd = hspd) {
+state_dmg = function(_dano = 1) {	
 	check_img(5);
 	
 	controls();
@@ -119,14 +125,16 @@ state_dmg = function(_dano = 1, _hspd = hspd) {
 		state = state_idle;
 	}
 	
-	if (dmg and dmg_timer <= 0 and life > 0) {
+	if (dmg and life > 0) {
 		dmg			= false;
 		dmg_timer	= game_get_speed(gamespeed_fps);
-		life--;	
+		life -= _dano;	
 	}	
 }
 
-p_collision = function() {	
+p_collision = function() {
+
+#region wall collision		
 	//horizontal colission
 	repeat(abs(hspd)) {
 		var _hspd = sign(hspd);
@@ -148,17 +156,17 @@ p_collision = function() {
 		} else {
 			y += _vspd	
 		}
-		
-		var _enemy = instance_place(x, y - _vspd, obj_enemies);
-		
-		if (_enemy and _enemy.life > 0 and dmg == false) {
-			jump_qt = 1;
-			vspd = -max_vspd;
-			_enemy.dmg = true;
-			_enemy.state = _enemy.state_dmg;
-		}	
-
 	}	
+#endregion
+		
+	var _enemy = instance_place(x, y + 1, obj_enemies);	
+	
+	if (_enemy and _enemy.life > 0 and !dmg) {
+		jump_qt = 1;
+		vspd = -max_vspd;
+		_enemy.dmg = true;
+		_enemy.state = _enemy.state_dmg;
+	}
 	
 	//collecting my item
 	var _fruta_collected = instance_place(x, y, obj_fruits)
@@ -168,11 +176,24 @@ p_collision = function() {
 		instance_destroy(_fruta_collected)
 	}	
 	
+	//traps collision
 	var _trap_collision = instance_place(x, y, obj_traps);
 	
-	if (_trap_collision) {
+	if (_trap_collision and dmg_timer <= 0 and life > 0) {
+		hspd = 0
+		dmg = true;
 		state = state_dmg;
 	}	
+	
+	//enemy colission
+	var _enemy = instance_place(x, y, obj_enemies);
+	
+	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0) {
+		hspd = 0
+		dmg = true;
+		state = state_dmg;	
+	}
+	
 }
 #endregion
 

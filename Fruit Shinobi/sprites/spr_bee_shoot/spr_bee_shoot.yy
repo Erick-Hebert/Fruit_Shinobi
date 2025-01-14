@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"bee",
-    "path":"folders/Sprites/animals/bee.yy",
+    "path":"folders/Sprites/enemies/bee.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

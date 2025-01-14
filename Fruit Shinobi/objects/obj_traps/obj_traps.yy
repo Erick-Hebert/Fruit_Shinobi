@@ -6,8 +6,8 @@
   "name":"obj_traps",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"traps",
+    "path":"folders/Objects/traps.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_spike",
-    "path":"sprites/spr_spike/spr_spike.yy",
+    "name":"spr_saw",
+    "path":"sprites/spr_saw/spr_saw.yy",
   },
   "spriteMaskId":null,
   "visible":true,

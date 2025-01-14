@@ -30,7 +30,7 @@
   "origin":7,
   "parent":{
     "name":"wood",
-    "path":"folders/Sprites/animals/wood.yy",
+    "path":"folders/Sprites/enemies/wood.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

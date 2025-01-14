@@ -9,8 +9,8 @@
   "name":"obj_collected",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"colectable",
+    "path":"folders/Objects/colectable.yy",
   },
   "parentObjectId":null,
   "persistent":false,

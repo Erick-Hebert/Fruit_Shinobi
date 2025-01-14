@@ -1,6 +1,6 @@
 {
   "$GMSprite":"",
-  "%Name":"spr_wood_bullet_peace",
+  "%Name":"spr_wood_shoot_peace",
   "bboxMode":0,
   "bbox_bottom":11,
   "bbox_left":4,
@@ -21,19 +21,19 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"4966c83f-8461-415d-8470-2003e0d42cec","blendMode":0,"displayName":"default","isLocked":false,"name":"4966c83f-8461-415d-8470-2003e0d42cec","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_wood_bullet_peace",
+  "name":"spr_wood_shoot_peace",
   "nineSlice":null,
   "origin":9,
   "parent":{
     "name":"wood",
-    "path":"folders/Sprites/animals/wood.yy",
+    "path":"folders/Sprites/enemies/wood.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"spr_wood_bullet_peace",
+    "%Name":"spr_wood_shoot_peace",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_wood_bullet_peace",
+    "name":"spr_wood_shoot_peace",
     "playback":1,
     "playbackSpeed":20.0,
     "playbackSpeedType":0,
@@ -69,7 +69,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"15261781-1775-4955-95eb-b7e7a93047ea","path":"sprites/spr_wood_bullet_peace/spr_wood_bullet_peace.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"15261781-1775-4955-95eb-b7e7a93047ea","path":"sprites/spr_wood_shoot_peace/spr_wood_shoot_peace.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"b01a83a9-9820-447a-82a7-ad4af25d2cc8","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

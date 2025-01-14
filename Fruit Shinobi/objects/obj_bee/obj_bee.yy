@@ -8,8 +8,8 @@
   "name":"obj_bee",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"enemies",
+    "path":"folders/Objects/enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_enemies",
@@ -36,6 +36,9 @@
     "name":"spr_bee_idle",
     "path":"sprites/spr_bee_idle/spr_bee_idle.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_bee_idle",
+    "path":"sprites/spr_bee_idle/spr_bee_idle.yy",
+  },
   "visible":true,
 }
