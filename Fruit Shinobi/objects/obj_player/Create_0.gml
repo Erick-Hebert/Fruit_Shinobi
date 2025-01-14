@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+//velocidade
 vspd		= 0;
 hspd		= 0;
 max_vspd	= 7; 
@@ -9,54 +10,120 @@ jump_qt		= 2;
 
 grav		= .5;
 
-life		= 2;
+//dano
+life		= 3;
 dmg			= false;
+dmg_timer	= 0;
 
+//sprite
+img_ind		= 1;
+img_numb	= 0;
+img_spd		= 12;
 xscale		= image_xscale;
 face		= 0;
 sprite		= sprite_index;
+sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_jump_double, spr_player_down, spr_player_dmg];
 
-sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_down, spr_player_jump_double];
-
-p_mov = function() {	
-	var _floor	= place_meeting(x, y + 1, obj_wall);
-	
-	var _right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
-	var _left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
-	var _jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
-		
-    // Controle de sprite
-    if (_right) {face = 0;xscale = 1;sprite = sprites[1];}
-    if (_jump) {face = 1; sprite = sprites[2];}
-    if (_left) {face = 2;xscale = -1;sprite = sprites[1];}
-    
-    if (!_right && !_jump && !_left && _floor) {
-        sprite = sprites[0]; 
-    }
-	
-	hspd = (_right - _left) * max_hspd;
-	
-	if (!_floor) {
-		vspd += grav;
-		if (vspd > 0){
-			sprite = sprites[3];
-		} else{
-			if (jump_qt == 1) {   
-				sprite = sprites[2];	
+#region control
+jump_control = function() {
+	if (!floor_) {
+		vspd += grav;		
+		if (vspd > 0) {
+			check_img(4)	
+		} else {
+			if (jump_qt >= 1) {
+				check_img(2);	
 			} else {
-				sprite = sprites[4];
+				check_img(3);	
 			}
 		}		
 	} else {		
 		jump_qt = 2;
 	}
 	
-	if (_jump and jump_qt > 0) {
+	if (jump and jump_qt > 0) {
 		jump_qt--;
 		vspd = -max_vspd	
 	}
 	
-	vspd = clamp(vspd, -max_vspd, max_vspd)
+	vspd = clamp(vspd, -max_vspd, max_vspd)	
+}
+
+controls = function() {
+	floor_	= place_meeting(x, y + 1, obj_wall);
+
+	right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
+	left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
+	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
+	
+	// Controle de sprite
+    if (right) {face = 0;xscale = 1;}
+    if (jump) {face = 1;}
+    if (left) {face = 2;xscale = -1;}
+	
+	hspd = (right - left) * max_hspd;	
+}
+
+check_img = function(_sprite_index) {
+	//checking if i'm using this sprite
+	if (sprite != sprites[_sprite_index]) {
+		//else i reset my index
+		img_ind = 0;	
+	}
+	
+	//using my sprite
+	sprite = sprites[_sprite_index];
+	
+	//geting my number of sprite frames
+	img_numb = sprite_get_number(sprites[_sprite_index]);
+	
+	//increasing my sprite index
+	img_ind += img_spd;
+	
+	//reseting my sprites after end
+	img_ind %= img_numb;
+	
+}
+
+#endregion
+
+#region states
+state_idle = function() {	
+	controls();	
+	
+	check_img(0);
+		
+	if (right xor left) {
+		state = state_mov;
+	}	
+	
+	jump_control()
+}
+
+state_mov = function() {		
+	controls();
+	
+	check_img(1);
+	
+	if (!right and !left) state = state_idle;
+	
+	jump_control();	
+}
+
+state_dmg = function(_dano = 1, _hspd = hspd) {
+	check_img(5);
+	
+	controls();
+	
+	if (img_ind + img_spd >= img_numb) {
+		state = state_idle;
+	}
+	
+	if (dmg and dmg_timer <= 0 and life > 0) {
+		dmg			= false;
+		dmg_timer	= game_get_speed(gamespeed_fps);
+		life--;	
+	}	
 }
 
 p_collision = function() {	
@@ -93,10 +160,20 @@ p_collision = function() {
 
 	}	
 	
+	//collecting my item
 	var _fruta_collected = instance_place(x, y, obj_fruits)
 
 	if (_fruta_collected) {
 		instance_create_layer(_fruta_collected.x, _fruta_collected.y, "Itens", obj_collected);
 		instance_destroy(_fruta_collected)
 	}	
+	
+	var _trap_collision = instance_place(x, y, obj_traps);
+	
+	if (_trap_collision) {
+		state = state_dmg;
+	}	
 }
+#endregion
+
+state = state_idle;

@@ -13,7 +13,7 @@ dmg_timer	= 0;
 
 sprite		= sprite_index;
 alpha		= image_alpha;
-img_numb	= 1;
+img_numb	= 0;
 img_ind		= 0;
 img_spd		= 12 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
