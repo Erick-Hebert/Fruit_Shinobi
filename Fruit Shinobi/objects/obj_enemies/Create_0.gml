@@ -62,4 +62,6 @@ state_dmg = function() {
 	
 }
 
+
+
 state = state_idle;

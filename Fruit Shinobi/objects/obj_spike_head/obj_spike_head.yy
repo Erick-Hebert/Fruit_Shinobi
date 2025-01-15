@@ -1,7 +1,11 @@
 {
   "$GMObject":"",
   "%Name":"obj_spike_head",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_spike_head",
   "overriddenProperties":[],
@@ -31,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_spike_head",
-    "path":"sprites/spr_spike_head/spr_spike_head.yy",
+    "name":"spr_spike_head_idle",
+    "path":"sprites/spr_spike_head_idle/spr_spike_head_idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

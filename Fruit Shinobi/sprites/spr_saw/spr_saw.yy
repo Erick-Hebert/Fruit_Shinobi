@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"traps",
-    "path":"folders/Sprites/traps.yy",
+    "name":"saw",
+    "path":"folders/Sprites/traps/saw.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

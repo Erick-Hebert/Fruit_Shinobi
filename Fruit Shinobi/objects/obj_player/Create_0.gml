@@ -93,7 +93,7 @@ check_img = function(_sprite_index) {
 
 #endregion
 
-#region states
+#region States
 state_idle = function() {	
 	controls();	
 	
@@ -206,6 +206,7 @@ p_collision = function() {
 	}	
 	
 }
+
 #endregion
 
 state = state_idle;
