@@ -119,8 +119,6 @@ state_mov = function() {
 state_dmg = function(_dano = 1) {	
 	check_img(5);
 	
-	controls();
-	
 	if (img_ind + img_spd >= img_numb) {
 		state = state_idle;
 	}
@@ -159,9 +157,9 @@ p_collision = function() {
 	}	
 #endregion
 		
-	var _enemy = instance_place(x, y + 2, obj_enemies);	
+	var _enemy = instance_place(x, y + 1, obj_enemies);	
 	
-	if (_enemy and bbox_bottom <= _enemy.bbox_top and _enemy.life > 0 and !dmg) {
+	if (_enemy  and _enemy.life > 0 and !dmg and y < _enemy.y) {
 		jump_qt = 1;
 		vspd = -max_vspd;
 		_enemy.dmg = true;
@@ -180,7 +178,12 @@ p_collision = function() {
 	var _trap_collision = instance_place(x, y, obj_traps);
 	
 	if (_trap_collision and dmg_timer <= 0 and life > 0) {
-		hspd = 0
+		if (x < _trap_collision.x) {
+			hspd = -1;	
+		} else {
+			hspd = 1;	
+		}
+		vspd = 0;
 		dmg = true;
 		state = state_dmg;
 	}	
@@ -189,7 +192,12 @@ p_collision = function() {
 	var _enemy = instance_place(x, y, obj_enemies);
 	
 	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0) {
-		hspd = 0
+		if (x < _enemy.x) {
+			hspd = -1;	
+		} else {
+			hspd = 1;	
+		}
+		vspd = 0;
 		dmg = true;
 		state = state_dmg;	
 	}
