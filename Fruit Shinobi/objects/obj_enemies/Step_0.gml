@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+dmg_timer--;
+
 state();
 
 if (life <= 0 and image_alpha > .5) {

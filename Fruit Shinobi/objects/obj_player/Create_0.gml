@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+window_set_fullscreen(1);
+
 //velocidade
 vspd		= 0;
 hspd		= 0;
@@ -68,27 +70,6 @@ controls = function() {
     if (left) {face = 2;xscale = -1;}
 	
 	hspd = (right - left) * max_hspd;	
-}
-
-check_img = function(_sprite_index) {
-	//checking if i'm using this sprite
-	if (sprite != sprites[_sprite_index]) {
-		//else i reset my index
-		img_ind = 0;	
-	}
-	
-	//using my sprite
-	sprite = sprites[_sprite_index];
-	
-	//geting my number of sprite frames
-	img_numb = sprite_get_number(sprites[_sprite_index]);
-	
-	//increasing my sprite index
-	img_ind += img_spd;
-	
-	//reseting my sprites after end
-	img_ind %= img_numb;
-	
 }
 
 #endregion

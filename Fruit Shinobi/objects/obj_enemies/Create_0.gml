@@ -19,29 +19,6 @@ img_spd		= 12 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 
-check_img = function(_sprite_index) {	
-	
-	dmg_timer--;
-	
-	//Se ainda n estiver usando a sprite  correta
-	if (sprite != sprites[_sprite_index]) {
-		//reseto meu img_ind
-		img_ind = 0;
-	}
-	
-	//ajustando a sprite
-	sprite = sprites[_sprite_index];
-	
-	//pegando a quant de frames da animação
-	img_numb = sprite_get_number(sprite);
-	
-	//aumentando meu indice conforme minha
-	img_ind += img_spd;
-	
-	//zerando após minha animação acabar
-	img_ind %= img_numb;
-}
-
 state_idle = function() {
 	check_img(0)
 	spd = 0;	
