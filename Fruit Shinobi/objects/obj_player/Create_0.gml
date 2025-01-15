@@ -159,9 +159,9 @@ p_collision = function() {
 	}	
 #endregion
 		
-	var _enemy = instance_place(x, y + 1, obj_enemies);	
+	var _enemy = instance_place(x, y + 2, obj_enemies);	
 	
-	if (_enemy and _enemy.life > 0 and !dmg) {
+	if (_enemy and bbox_bottom <= _enemy.bbox_top and _enemy.life > 0 and !dmg) {
 		jump_qt = 1;
 		vspd = -max_vspd;
 		_enemy.dmg = true;
