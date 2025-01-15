@@ -1,15 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_traps",
+  "%Name":"obj_spike_head",
   "eventList":[],
   "managed":true,
-  "name":"obj_traps",
+  "name":"obj_spike_head",
   "overriddenProperties":[],
   "parent":{
     "name":"traps",
     "path":"folders/Objects/traps.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_saw",
+    "path":"objects/obj_saw/obj_saw.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -28,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_saw",
-    "path":"sprites/spr_saw/spr_saw.yy",
+    "name":"spr_spike_head",
+    "path":"sprites/spr_spike_head/spr_spike_head.yy",
   },
   "spriteMaskId":null,
   "visible":true,

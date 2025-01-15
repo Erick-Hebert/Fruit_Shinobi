@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+window_set_fullscreen(1);
+
 //velocidade
 vspd		= 0;
 hspd		= 0;
@@ -11,7 +13,7 @@ jump_qt		= 2;
 grav		= .5;
 
 //dano
-max_life	= 3;
+max_life	= 5;
 life		= max_life;
 dmg			= false;
 dmg_timer	= 0;
@@ -156,7 +158,10 @@ p_collision = function() {
 		}
 	}	
 #endregion
-		
+
+#region enemy collision	
+	
+	//player hitting enemy
 	var _enemy = instance_place(x, y + 1, obj_enemies);	
 	
 	if (_enemy  and _enemy.life > 0 and !dmg and y < _enemy.y) {
@@ -166,16 +171,22 @@ p_collision = function() {
 		_enemy.state = _enemy.state_dmg;
 	}
 	
-	//collecting my item
-	var _fruta_collected = instance_place(x, y, obj_fruits)
-
-	if (_fruta_collected) {
-		instance_create_layer(_fruta_collected.x, _fruta_collected.y, "Itens", obj_collected);
-		instance_destroy(_fruta_collected)
-	}	
+	//enemy colission
+	_enemy = instance_place(x, y, obj_enemies);
+	
+	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0) {
+		if (x < _enemy.x) {
+			hspd = -1;	
+		} else {
+			hspd = 1;	
+		}
+		vspd = 0;
+		dmg = true;
+		state = state_dmg;	
+	}
 	
 	//traps collision
-	var _trap_collision = instance_place(x, y, obj_traps);
+	var _trap_collision = instance_place(x, y, obj_saw);
 	
 	if (_trap_collision and dmg_timer <= 0 and life > 0) {
 		if (x < _trap_collision.x) {
@@ -188,19 +199,13 @@ p_collision = function() {
 		state = state_dmg;
 	}	
 	
-	//enemy colission
-	var _enemy = instance_place(x, y, obj_enemies);
-	
-	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0) {
-		if (x < _enemy.x) {
-			hspd = -1;	
-		} else {
-			hspd = 1;	
-		}
-		vspd = 0;
-		dmg = true;
-		state = state_dmg;	
-	}
+	//collecting my item
+	var _fruta_collected = instance_place(x, y, obj_fruits)
+
+	if (_fruta_collected) {
+		instance_create_layer(_fruta_collected.x, _fruta_collected.y, "Itens", obj_collected);
+		instance_destroy(_fruta_collected)
+	}	
 	
 }
 #endregion
