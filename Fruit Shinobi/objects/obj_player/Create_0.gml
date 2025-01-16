@@ -26,21 +26,24 @@ xscale		= image_xscale;
 alpha		= image_alpha;
 face		= 0;
 sprite		= sprite_index;
-sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_jump_double, spr_player_down, spr_player_dmg];
+sprites		= [spr_player_idle, spr_player_run, spr_player_jump, spr_player_jump_double,
+				spr_player_down, spr_player_dmg, spr_player_slide];
 
 #region control
 jump_control = function() {
 	if (!floor_) {
 		vspd += grav;		
 		if (vspd > 0) {
-			check_img(4)	
+			check_img(4)
+			slide_control();
 		} else {
 			if (jump_qt >= 1) {
 				check_img(2);	
 			} else {
 				check_img(3);	
 			}
-		}		
+		}	
+		
 	} else {		
 		jump_qt = 2;
 	}
@@ -50,8 +53,12 @@ jump_control = function() {
 		vspd = -max_vspd	
 	}
 	
-	vspd = clamp(vspd, -max_vspd, max_vspd)	
+	vspd = clamp(vspd, -max_vspd, max_vspd);	
+}
 	
+slide_control = function() {
+	//horizontal colission
+	if (place_meeting(x + 1, y, obj_wall) and !place_meeting(x, y + _vspd, obj_wall)) state = state_slide; 		
 }
 
 controls = function() {
@@ -71,10 +78,9 @@ controls = function() {
 	
 	hspd = (right - left) * max_hspd;	
 }
-
 #endregion
 
-#region States
+#region states
 state_idle = function() {	
 	controls();	
 	
@@ -111,6 +117,39 @@ state_dmg = function(_dano = 1) {
 	}	
 }
 
+state_slide = function() {
+	
+	jump_control()
+	
+	check_img(6);
+	
+	right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
+	left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
+	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
+	
+	hspd = 0;
+	vspd = 1;
+	
+	if (xscale != 1) {
+		var _dir = right;
+		var _val = -1;
+	} else {
+		var _dir = left;
+		var _val = 1;
+	}
+	
+	if (instance_place(x, y + 1, obj_wall) or _dir or !instance_place(x + _val, y, obj_wall)) {
+		state = state_idle;	
+	}
+	
+	if (jump) {
+		state = state_mov;
+		vspd = -max_vspd
+		jump_qt = 1;
+	}
+	
+}
+	
 p_collision = function() {
 
 #region wall collision		
@@ -138,7 +177,7 @@ p_collision = function() {
 	}	
 #endregion
 
-#region enemy collision	
+	#region enemy collision	
 	
 	//player hitting enemy
 	var _enemy = instance_place(x, y + 1, obj_enemies);	
@@ -164,6 +203,8 @@ p_collision = function() {
 		state = state_dmg;	
 	}
 	
+	#endregion
+	
 	//traps collision
 	var _trap_collision = instance_place(x, y, obj_saw);
 	
@@ -187,7 +228,6 @@ p_collision = function() {
 	}	
 	
 }
-
 #endregion
 
 state = state_idle;
