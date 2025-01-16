@@ -10,18 +10,20 @@ max_vspd	= 7;
 max_hspd	= 3;
 jump_qt		= 2;
 
+slide_leave = 0;
+
 grav		= .5;
 
 //dano
 max_life	= 5;
 life		= max_life;
-dmg			= false;
+dmg			= 0;
 dmg_timer	= 0;
 
 //sprite
 img_ind		= 1;
 img_numb	= 0;
-img_spd		= 12 / game_get_speed(gamespeed_fps);
+img_spd		= 15 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 alpha		= image_alpha;
 face		= 0;
@@ -35,7 +37,6 @@ jump_control = function() {
 		vspd += grav;		
 		if (vspd > 0) {
 			check_img(4)
-			slide_control();
 		} else {
 			if (jump_qt >= 1) {
 				check_img(2);	
@@ -56,11 +57,6 @@ jump_control = function() {
 	vspd = clamp(vspd, -max_vspd, max_vspd);	
 }
 	
-slide_control = function() {
-	//horizontal colission
-	if (place_meeting(x + 1, y, obj_wall) and !place_meeting(x, y + _vspd, obj_wall)) state = state_slide; 		
-}
-
 controls = function() {
 	
 	dmg_timer--;
@@ -82,7 +78,9 @@ controls = function() {
 
 #region states
 state_idle = function() {	
-	controls();	
+	hspd = 0;
+	
+	controls();
 	
 	check_img(0);
 		
@@ -115,39 +113,6 @@ state_dmg = function(_dano = 1) {
 		dmg_timer	= game_get_speed(gamespeed_fps);
 		life -= _dano;	
 	}	
-}
-
-state_slide = function() {
-	
-	jump_control()
-	
-	check_img(6);
-	
-	right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
-	left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
-	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
-	
-	hspd = 0;
-	vspd = 1;
-	
-	if (xscale != 1) {
-		var _dir = right;
-		var _val = -1;
-	} else {
-		var _dir = left;
-		var _val = 1;
-	}
-	
-	if (instance_place(x, y + 1, obj_wall) or _dir or !instance_place(x + _val, y, obj_wall)) {
-		state = state_idle;	
-	}
-	
-	if (jump) {
-		state = state_mov;
-		vspd = -max_vspd
-		jump_qt = 1;
-	}
-	
 }
 	
 p_collision = function() {
@@ -192,7 +157,7 @@ p_collision = function() {
 	//enemy colission
 	_enemy = instance_place(x, y, obj_enemies);
 	
-	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0) {
+	if (_enemy and !_enemy.dmg and dmg_timer <= 0 and life > 0 and _enemy.life > 0) {
 		if (x < _enemy.x) {
 			hspd = -1;	
 		} else {
