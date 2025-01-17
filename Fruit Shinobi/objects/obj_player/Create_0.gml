@@ -1,8 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-window_set_fullscreen(1);
-
 //velocidade
 vspd		= 0;
 hspd		= 0;
@@ -10,8 +8,6 @@ max_vspd	= 7;
 max_hspd	= 3;
 jump_qt		= 2;
 can_move	= 0;
-
-slide_leave = 0;
 
 grav		= .5;
 
@@ -60,7 +56,7 @@ jump_control = function() {
 }
 
 slide_control = function() {	
-	var _owall = place_meeting(x - 1, y, obj_wall) or place_meeting(x + 1, y, obj_wall);
+	var _owall = place_meeting(x + xscale, y, obj_wall)
 	
 	if (_owall and !floor_) {
 		check_img(6)

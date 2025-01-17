@@ -4,4 +4,7 @@
 // Inherit the parent event
 event_inherited();
 
-sprites = [spr_bee_idle, spr_bee_attack, spr_bee_dmg]
+sprites = [spr_bee_idle, spr_bee_idle, spr_bee_dmg, spr_bee_attack]
+
+hspd = 0;
+

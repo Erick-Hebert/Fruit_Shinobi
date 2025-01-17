@@ -89,6 +89,7 @@
     {"id":{"name":"spr_wood_attack","path":"sprites/spr_wood_attack/spr_wood_attack.yy",},},
     {"id":{"name":"spr_wood_dmg","path":"sprites/spr_wood_dmg/spr_wood_dmg.yy",},},
     {"id":{"name":"spr_wood_idle","path":"sprites/spr_wood_idle/spr_wood_idle.yy",},},
+    {"id":{"name":"spr_wood_run","path":"sprites/spr_wood_run/spr_wood_run.yy",},},
     {"id":{"name":"spr_wood_shoot_peace","path":"sprites/spr_wood_shoot_peace/spr_wood_shoot_peace.yy",},},
     {"id":{"name":"spr_wood_shoot","path":"sprites/spr_wood_shoot/spr_wood_shoot.yy",},},
   ],

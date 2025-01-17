@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"spr_wood_idle",
   "bboxMode":2,
-  "bbox_bottom":28,
+  "bbox_bottom":31,
   "bbox_left":22,
   "bbox_right":41,
   "bbox_top":8,

@@ -3,24 +3,24 @@
 
 vspd		= 0;
 max_vspd	= 2;
-hspd		= 0;
-max_hspd	= 2;
+hspd		= -1;
 grav		= .5;
 
-life		= 2;
+life		= 1;
 dmg			= false;
 dmg_timer	= 0;
+timer		= game_get_speed(gamespeed_fps) * .5
 
 sprite		= sprite_index;
 alpha		= image_alpha;
 img_numb	= 0;
 img_ind		= 0;
-img_spd		= 12 / game_get_speed(gamespeed_fps);
+img_spd		= 10 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 
 state_idle = function() {
-	check_img(0)
+	check_img(1)
 	spd = 0;	
 }
 
@@ -33,12 +33,11 @@ state_dmg = function() {
 	
 	if (dmg and dmg_timer <= 0 and life > 0) {
 		dmg			= false;
-		dmg_timer	= game_get_speed(gamespeed_fps) / 2;
+		dmg_timer	= timer;
 		life--;	
 	}
 	
 }
-
 
 
 state = state_idle;

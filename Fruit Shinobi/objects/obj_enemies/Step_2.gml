@@ -3,10 +3,11 @@
 
 repeat(abs(hspd)) {	
 	var _hspd = sign(hspd);	
-	if (place_meeting(x + _hspd, y, obj_wall)) {
-		hspd = 0;	
+	if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd, y + 1, obj_wall)) {	
+		xscale = xscale * -1;
+		hspd = hspd * -1;
 	} else {
-		x += _hspd	
+		x += _hspd * .5
 	}	
 }
 
