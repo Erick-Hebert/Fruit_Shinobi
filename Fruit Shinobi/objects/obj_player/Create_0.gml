@@ -56,10 +56,6 @@ jump_control = function() {
 		vspd = -max_vspd	
 	}
 	
-	var _owall = place_meeting(x, y , obj_wall) or place_meeting(x, y, obj_wall);
-	
-	if (_owall and place_meeting(x, y + 1, obj_wall)) xscale = -xscale;
-	
 	vspd = clamp(vspd, -max_vspd, max_vspd);	
 }
 

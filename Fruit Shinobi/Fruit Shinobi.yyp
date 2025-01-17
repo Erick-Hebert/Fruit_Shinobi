@@ -46,9 +46,6 @@
   },
   "name":"Fruit Shinobi",
   "resources":[
-    {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
-    {"id":{"name":"Note2","path":"notes/Note2/Note2.yy",},},
-    {"id":{"name":"Note3","path":"notes/Note3/Note3.yy",},},
     {"id":{"name":"obj_bee","path":"objects/obj_bee/obj_bee.yy",},},
     {"id":{"name":"obj_collected","path":"objects/obj_collected/obj_collected.yy",},},
     {"id":{"name":"obj_enemies","path":"objects/obj_enemies/obj_enemies.yy",},},
