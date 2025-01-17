@@ -9,6 +9,7 @@ hspd		= 0;
 max_vspd	= 7; 
 max_hspd	= 3;
 jump_qt		= 2;
+can_move	= 0;
 
 slide_leave = 0;
 
@@ -37,6 +38,7 @@ jump_control = function() {
 		vspd += grav;		
 		if (vspd > 0) {
 			check_img(4)
+			slide_control();
 		} else {
 			if (jump_qt >= 1) {
 				check_img(2);	
@@ -54,12 +56,36 @@ jump_control = function() {
 		vspd = -max_vspd	
 	}
 	
+	var _owall = place_meeting(x, y , obj_wall) or place_meeting(x, y, obj_wall);
+	
+	if (_owall and place_meeting(x, y + 1, obj_wall)) xscale = -xscale;
+	
 	vspd = clamp(vspd, -max_vspd, max_vspd);	
 }
+
+slide_control = function() {	
+	var _owall = place_meeting(x - 1, y, obj_wall) or place_meeting(x + 1, y, obj_wall);
 	
-controls = function() {
+	if (_owall and !floor_) {
+		check_img(6)
+		if (vspd > 0) {
+			vspd = 1;
+		}
+		
+		if (jump) {
+			vspd = -max_vspd;
+			jump_qt = 2;
+			can_move = 10;
+			xscale = -xscale;
+			hspd = max_hspd * xscale;
+		}
+	}	
+}
 	
+controls = function() {	
 	dmg_timer--;
+	
+	can_move--;
 	
 	floor_	= place_meeting(x, y + 1, obj_wall);
 
@@ -72,14 +98,12 @@ controls = function() {
     if (jump) {face = 1;}
     if (left) {face = 2;xscale = -1;}
 	
-	hspd = (right - left) * max_hspd;	
+	if (can_move <= 0) hspd = (right - left) * max_hspd;	
 }
 #endregion
 
 #region states
-state_idle = function() {	
-	hspd = 0;
-	
+state_idle = function() {		
 	controls();
 	
 	check_img(0);

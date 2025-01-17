@@ -1,0 +1,17 @@
+slide_control = function() {
+	var _owall = place_meeting(x - 1, y, obj_wall) or place_meeting(x + 1, y, obj_wall);
+	if (_owall and !floor_) {
+		check_img(6)
+		if (vspd > 1) {
+			vspd = 1;
+		}
+		
+		if (jump) {
+			vspd = -max_vspd;
+			jump_qt = 2;
+			can_move = 10;
+			xscale = -xscale;
+			hspd = max_hspd * xscale;
+		}
+	}
+}
