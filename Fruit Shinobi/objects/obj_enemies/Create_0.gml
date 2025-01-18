@@ -6,10 +6,10 @@ max_vspd	= 2;
 hspd		= -1;
 grav		= .5;
 
-life		= 1;
+life		= 2;
 dmg			= false;
 dmg_timer	= 0;
-timer		= game_get_speed(gamespeed_fps) * .5
+timer		= game_get_speed(gamespeed_fps) * .2
 
 sprite		= sprite_index;
 alpha		= image_alpha;
@@ -39,5 +39,25 @@ state_dmg = function() {
 	
 }
 
+e_collision = function() {
+	repeat(abs(hspd)) {	
+	var _hspd = sign(hspd);	
+	if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd * (sprite_width/2), y + 1, obj_wall)) {	
+			xscale = xscale * -1;
+			hspd = hspd * -1;
+		} else {
+			x += _hspd * .5
+		}	
+	}
+
+	repeat(abs(vspd)) {	
+		var _vspd = sign(vspd);	
+		if (place_meeting(x, y + _vspd, obj_wall)) {
+			vspd = 0;	
+		} else {
+			y += _vspd	
+		}
+	}	
+}
 
 state = state_idle;

@@ -29,7 +29,7 @@
   ],
   "name":"spr_player_dmg",
   "nineSlice":null,
-  "origin":9,
+  "origin":7,
   "parent":{
     "name":"player",
     "path":"folders/Sprites/player.yy",
@@ -99,7 +99,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":18,
+    "xorigin":16,
     "yorigin":32,
   },
   "swatchColours":null,

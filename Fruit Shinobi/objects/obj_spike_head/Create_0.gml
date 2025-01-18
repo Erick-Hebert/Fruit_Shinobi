@@ -3,7 +3,7 @@
 
 vspd		= 0;
 
-hit_timer   = 0;
+hit_timer   = 3 * game_get_speed(gamespeed_fps);
 y_start		= ystart
 
 img_numb	= 0;
@@ -45,4 +45,4 @@ state_hit = function() {
 }
 
 
-state = state_attack;
+state = state_idle;
