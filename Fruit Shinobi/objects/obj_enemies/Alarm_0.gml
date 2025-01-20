@@ -1,8 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-if (life <= 0) exit;
-
-
-e_collision();
+xscale = -xscale;
+max_hspd = max_hspd * xscale;
 

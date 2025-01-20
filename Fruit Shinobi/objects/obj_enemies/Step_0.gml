@@ -17,5 +17,3 @@ if (life <= 0 and image_alpha > .3) {
 
 if (image_alpha <= .35) {instance_destroy(); instance_create_layer(x, y, "Itens", obj_collected)}
 
-
-vspd = clamp(vspd, -max_vspd, max_vspd)

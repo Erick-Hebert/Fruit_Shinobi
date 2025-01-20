@@ -2,8 +2,8 @@
 // Você pode escrever seu código neste editor
 
 vspd		= 0;
-max_vspd	= 2;
-hspd		= -1;
+max_hspd	= -1;
+hspd		= max_hspd;
 grav		= .5;
 
 life		= 2;
@@ -15,13 +15,19 @@ sprite		= sprite_index;
 alpha		= image_alpha;
 img_numb	= 0;
 img_ind		= 0;
-img_spd		= 10 / game_get_speed(gamespeed_fps);
+img_spd		= 15 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 
 state_idle = function() {
-	check_img(1)
-	spd = 0;	
+	check_img(0)
+	
+	hspd = 0;
+	
+	if (alarm[0] <= 0) {
+		state = state_run;	
+	}
+	
 }
 
 state_dmg = function() {	
@@ -39,12 +45,18 @@ state_dmg = function() {
 	
 }
 
-e_collision = function() {
-	repeat(abs(hspd)) {	
-	var _hspd = sign(hspd);	
-	if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd * (sprite_width/2), y + 1, obj_wall)) {	
-			xscale = xscale * -1;
-			hspd = hspd * -1;
+state_run = function() {
+	check_img(1);
+	
+	hspd = max_hspd;
+}
+
+e_collision = function() {	 
+	repeat(abs(hspd)) {			
+		var _hspd = sign(hspd);	
+		if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd * (sprite_width/2), y + 1, obj_wall)) {	
+			state = state_idle;	
+			if (state != state_idle) alarm[0] = game_get_speed(gamespeed_fps);
 		} else {
 			x += _hspd * .5
 		}	

@@ -69,9 +69,9 @@ slide_control = function() {
 		if (jump) {
 			vspd = -max_vspd;
 			jump_qt = 2;
-			can_move = 10;
+			can_move = 15;
 			xscale = -xscale;
-			hspd = max_hspd * xscale;
+			hspd = (max_hspd - 1)* xscale;
 		}
 	}	
 }
@@ -87,10 +87,11 @@ controls = function() {
 	left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
 	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
 	
+	
 	// Controle de sprite
-    if (right) {face = 0;xscale = 1;}
-    if (jump) {face = 1;}
-    if (left) {face = 2;xscale = -1;}
+	if (right) {face = 0;xscale = 1;}
+	if (jump) {face = 1;}
+	if (left) {face = 2;xscale = -1;}
 	
 	if (can_move <= 0) hspd = (right - left) * max_hspd;	
 }
