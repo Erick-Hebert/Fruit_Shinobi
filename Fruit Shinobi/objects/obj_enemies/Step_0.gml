@@ -6,11 +6,7 @@ dmg_timer--;
 state();
 
 if (life <= 0 and image_alpha > .3) {
-	check_img(2)
-	vspd = -max_vspd
-	y += vspd;
-	image_angle -= 5;
-	image_alpha -= .02
+	image_alpha -= .05
 } else {
 	vspd += grav;	
 }

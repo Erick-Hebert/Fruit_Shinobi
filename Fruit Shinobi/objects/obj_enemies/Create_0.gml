@@ -21,13 +21,8 @@ sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 
 state_idle = function() {
 	check_img(0)
-	
-	hspd = 0;
-	
-	if (alarm[0] <= 0) {
-		state = state_run;	
-	}
-	
+	hspd = 0	
+	if(img_ind + img_spd >= img_numb) state = state_run;	
 }
 
 state_dmg = function() {	
@@ -47,16 +42,16 @@ state_dmg = function() {
 
 state_run = function() {
 	check_img(1);
-	
-	hspd = max_hspd;
+	hspd = max_hspd * xscale;
 }
 
 e_collision = function() {	 
+	
 	repeat(abs(hspd)) {			
 		var _hspd = sign(hspd);	
-		if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd * (sprite_width/2), y + 1, obj_wall)) {	
-			state = state_idle;	
-			if (state != state_idle) alarm[0] = game_get_speed(gamespeed_fps);
+		if (place_meeting(x + _hspd, y, obj_wall) or !place_meeting(x + _hspd * (sprite_width/2), y + 1, obj_wall)) {				
+			state = state_idle;
+			xscale = -xscale;
 		} else {
 			x += _hspd * .5
 		}	
@@ -67,7 +62,7 @@ e_collision = function() {
 		if (place_meeting(x, y + _vspd, obj_wall)) {
 			vspd = 0;	
 		} else {
-			y += _vspd	
+			y += _vspd;
 		}
 	}	
 }
