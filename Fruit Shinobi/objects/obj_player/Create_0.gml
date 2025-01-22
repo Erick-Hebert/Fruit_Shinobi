@@ -85,7 +85,7 @@ controls = function() {
 
 	right	= keyboard_check(vk_right) or keyboard_check(ord("D"));
 	left	= keyboard_check(vk_left) or keyboard_check(ord("A"));
-	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
+	jump	= keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_space);
 	
 	
 	// Controle de sprite
