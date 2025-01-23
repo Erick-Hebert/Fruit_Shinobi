@@ -4,4 +4,4 @@
 // Inherit the parent event
 event_inherited();
 
-draw_rectangle(x, y - sprite_height, room_width * -xscale, y, 1);
+ret_collision();

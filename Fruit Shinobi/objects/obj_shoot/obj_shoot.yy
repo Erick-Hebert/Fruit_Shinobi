@@ -1,22 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_wood",
+  "%Name":"obj_shoot",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_wood",
+  "name":"obj_shoot",
   "overriddenProperties":[],
   "parent":{
-    "name":"enemies",
-    "path":"folders/Objects/enemies.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
-  "parentObjectId":{
-    "name":"obj_enemies",
-    "path":"objects/obj_enemies/obj_enemies.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -35,12 +30,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_wood_idle",
-    "path":"sprites/spr_wood_idle/spr_wood_idle.yy",
+    "name":"spr_wood_shoot",
+    "path":"sprites/spr_wood_shoot/spr_wood_shoot.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_wood_idle",
-    "path":"sprites/spr_wood_idle/spr_wood_idle.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

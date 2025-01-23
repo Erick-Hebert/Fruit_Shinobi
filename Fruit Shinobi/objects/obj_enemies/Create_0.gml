@@ -18,6 +18,7 @@ img_ind		= 0;
 img_spd		= 15 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
+shoot_timer = 0;
 
 state_idle = function() {
 	check_img(0)
