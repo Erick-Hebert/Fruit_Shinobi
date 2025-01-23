@@ -22,7 +22,7 @@ dmg_timer	= 0;
 //sprite
 img_ind		= 1;
 img_numb	= 0;
-img_spd		= 15 / game_get_speed(gamespeed_fps);
+img_spd		= 12 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 alpha		= image_alpha;
 face		= 0;
@@ -120,7 +120,7 @@ state_mov = function() {
 	jump_control();	
 }
 
-state_dmg = function(_dano = 1) {	
+state_dmg = function() {	
 	check_img(5);
 	
 	if (img_ind + img_spd >= img_numb) {
@@ -130,7 +130,7 @@ state_dmg = function(_dano = 1) {
 	if (dmg and life > 0) {
 		dmg			= false;
 		dmg_timer	= game_get_speed(gamespeed_fps);
-		life -= _dano;	
+		life -= 1;	
 	}	
 }
 	

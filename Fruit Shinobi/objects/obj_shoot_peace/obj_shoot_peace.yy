@@ -1,13 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shoot",
+  "%Name":"obj_shoot_peace",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_shoot",
+  "name":"obj_shoot_peace",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -32,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_wood_shoot",
-    "path":"sprites/spr_wood_shoot/spr_wood_shoot.yy",
+    "name":"spr_wood_shoot_peace",
+    "path":"sprites/spr_wood_shoot_peace/spr_wood_shoot_peace.yy",
   },
   "spriteMaskId":null,
   "visible":true,
