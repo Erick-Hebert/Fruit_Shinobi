@@ -4,4 +4,4 @@
 // Inherit the parent event
 event_inherited();
 
-draw_rectangle(x, y - 20, room_width * -xscale, y, 1);
+draw_rectangle(x + 20 * -xscale, y - 20, room_width * -xscale, y, 1);

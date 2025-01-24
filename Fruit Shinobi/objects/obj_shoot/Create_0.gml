@@ -4,6 +4,9 @@
 sprite = spr_wood_shoot_peace;
 
 s_collision = function() {
+	
+	var _x = x;
+	
 	var _wall = place_meeting(x + image_xscale, y, obj_wall);
 	
 	if (_wall) {
@@ -19,8 +22,14 @@ s_collision = function() {
 		instance_destroy();
 		with(obj_player) {
 			if (life > 0 and !dmg and dmg_timer <= 0) {
+				if (x < _x) {
+					hspd = -1;	
+				} else {
+					hspd = 1;	
+				}
+				vspd = 0;
 				dmg = true;
-				state = state_dmg;	
+				state = state_dmg;		
 			}
 		}
 	}

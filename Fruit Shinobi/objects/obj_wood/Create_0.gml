@@ -19,8 +19,8 @@ state_attack = function() {
 }
 
 ret_collision = function() {
-	var _shoot = collision_rectangle(x, y - 20, room_width * -xscale, y, obj_player, 1, 0);	
-	if (_shoot and state != state_attack) {
+	var _shoot = collision_rectangle(x + 20 * -xscale, y - 20, room_width * -xscale, y, obj_player, 1, 0);	
+	if (_shoot and state != state_attack and state != state_dmg) {
 		state = state_attack;	
 	} else {
 		if (state = state_attack and img_ind + img_spd >= img_numb and !_shoot) state = state_idle;	
