@@ -19,7 +19,7 @@ state_attack = function() {
 }
 
 ret_collision = function() {
-	var _shoot = collision_rectangle(x, y - sprite_height, room_width * -xscale, y, obj_player, 1, 0);	
+	var _shoot = collision_rectangle(x, y - 20, room_width * -xscale, y, obj_player, 1, 0);	
 	if (_shoot and state != state_attack) {
 		state = state_attack;	
 	} else {
