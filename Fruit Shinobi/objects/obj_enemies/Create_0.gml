@@ -1,16 +1,26 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+//wood timer
+shoot_timer = 0;
+
+//bee collision 
+x_start = xstart;
+y_start = ystart;
+
+//mov
 vspd		= 0;
 max_hspd	= -1;
 hspd		= max_hspd;
 grav		= .5;
 
+//dmg and life
 life		= 2;
 dmg			= false;
 dmg_timer	= 0;
 timer		= game_get_speed(gamespeed_fps) * .2
 
+//sprites
 sprite		= sprite_index;
 alpha		= image_alpha;
 img_numb	= 0;
@@ -18,7 +28,6 @@ img_ind		= 0;
 img_spd		= 15 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
-shoot_timer = 0;
 
 state_idle = function() {
 	check_img(0)
