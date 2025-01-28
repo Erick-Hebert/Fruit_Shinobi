@@ -17,6 +17,7 @@ life		= max_life;
 dmg			= 0;
 dmg_timer	= 0;
 
+
 //sprite
 img_ind		= 1;
 img_numb	= 0;
@@ -60,7 +61,7 @@ slide_control = function() {
 	
 	if (_owall and !floor_) {
 		check_img(6)
-		if (vspd > 0) {
+		if (vspd > 1) {
 			vspd = 1;
 		}
 		
