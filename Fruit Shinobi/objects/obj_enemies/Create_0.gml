@@ -2,7 +2,8 @@
 // Você pode escrever seu código neste editor
 
 //wood timer
-shoot_timer = 0;
+shoot_timer = game_get_speed(gamespeed_fps);
+shooted = false;
 
 //bee collision 
 x_start = xstart;
@@ -31,6 +32,7 @@ sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 
 state_idle = function() {
 	check_img(0)
+	shooted = 0;
 	hspd = 0	
 	if(img_ind + img_spd >= img_numb) state = state_run;	
 }

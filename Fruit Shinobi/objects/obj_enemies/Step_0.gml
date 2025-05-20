@@ -2,7 +2,8 @@
 // Você pode escrever seu código neste editor
 
 dmg_timer--;
-shoot_timer--;
+
+if (shooted) shoot_timer--;
 
 state();
 

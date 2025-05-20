@@ -4,4 +4,6 @@
 // Inherit the parent event
 event_inherited();
 
-draw_rectangle(x + 20 * -xscale, y - 20, room_width * -xscale, y, 1);
+var _border = 32
+
+draw_rectangle(x  + (_border * -xscale), y - _border, x + (_border + 100) * -xscale, y, 1);
