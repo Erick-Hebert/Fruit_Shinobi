@@ -26,7 +26,7 @@ sprite		= sprite_index;
 alpha		= image_alpha;
 img_numb	= 0;
 img_ind		= 0;
-img_spd		= 15 / game_get_speed(gamespeed_fps);
+img_spd		= 10 / game_get_speed(gamespeed_fps);
 xscale		= image_xscale;
 sprites		= [spr_mush_idle, spr_mush_run, spr_mush_dmg];
 

@@ -20,7 +20,7 @@ state_attack = function() {
 ret_collision = function() {
 	
 	var _border = 32;
-	var _dist = 100;
+	var _dist = 150;
 	
 	var _shoot = collision_rectangle(x + _border * -xscale, y - _border, x + (_border + _dist)  * -xscale, y, obj_player, 1, 0);	
 	if (_shoot and state != state_attack and state != state_dmg) {

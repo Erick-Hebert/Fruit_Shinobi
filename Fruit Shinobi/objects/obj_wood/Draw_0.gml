@@ -5,5 +5,6 @@
 event_inherited();
 
 var _border = 32
+var _dist = 150;
 
-draw_rectangle(x  + (_border * -xscale), y - _border, x + (_border + 100) * -xscale, y, 1);
+draw_rectangle(x  + (_border/2 * -xscale), y - _border, x + (_border + _dist) * -xscale, y, 1);
